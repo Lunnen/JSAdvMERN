@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Grow, Grid } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect } from "react";
+import { Container } from "@material-ui/core";
+import { useDispatch } from "react-redux";
 
-import { getPosts } from '../../actions/posts';
-import Posts from '../Posts/Posts';
-import Form from '../Form/Form';
+import { getPosts } from "../../actions/posts";
+import Posts from "../Posts/Posts";
+//import Form from '../Form/Form';
 
 const Home = () => {
   const [currentId, setCurrentId] = useState(0);
@@ -15,11 +15,9 @@ const Home = () => {
   }, [currentId, dispatch]);
 
   return (
-    
-      <Container>
-        <Posts setCurrentId={setCurrentId} />
-        </Container>
-  
+    <Container>
+      <Posts setCurrentId={setCurrentId} />
+    </Container>
   );
 };
 

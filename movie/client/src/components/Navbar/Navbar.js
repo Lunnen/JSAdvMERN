@@ -37,83 +37,37 @@ const Navbar = () => {
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
       <div className={classes.brandContainer}>
-        <Typography
-          component={Link}
-          to="/"
-          className={classes.heading}
-          variant="h2"
-          align="center"
-        >
+        <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">
           {" "}
-          <img
-            className={classes.image}
-            src={MovieCoolector}
-            alt="movie"
-            height="80"
-          />
+          <img className={classes.image} src={MovieCoolector} alt="movie" height="80" />
         </Typography>
       </div>
       <Toolbar className={classes.toolbar}>
         {user?.result ? (
           <div className={classes.profile}>
-            <Button
-              component={Link}
-              to="/"
-              style={{ marginLeft: "10px" }}
-            >
+            <Button component={Link} to="/" style={{ marginLeft: "10px" }}>
               Add Movie
             </Button>
-             <Button
-              component={Link}
-              to="/"
-              style={{ marginLeft: "10px" }}
-            >
+            <Button component={Link} to="/" style={{ marginLeft: "10px" }}>
               My Movies
             </Button>
-            <Button
-              component={Link}
-              to="/"
-              style={{ marginLeft: "10px" }}
-            >
+            <Button component={Link} to="/" style={{ marginLeft: "10px" }}>
               Account
             </Button>
-            <Avatar
-              className={classes.avatar}
-              alt={user?.result.name}
-              src={user?.result.imageUrl}
-            >
+            <Avatar className={classes.avatar} alt={user?.result.name} src={user?.result.imageUrl}>
               {user?.result.name.charAt(0)}
             </Avatar>
-           
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={logout}
-              className={classes.logout}
-            >
+
+            <Button variant="contained" color="secondary" onClick={logout} className={classes.logout}>
               Logout
             </Button>
           </div>
         ) : (
           <div className={classes.profile}>
-           
-          <Button
-          component={Link}
-            to={{   pathname: '/auth/',
-                    state: 'login',
-            }}
-            variant="contained"
-            color="primary"
-          >
-            Sign In
-          </Button>
-           <Button
-              component={Link}
-               to={{    pathname: '/auth/',
-                        state: 'register',
-                    }}
-              style={{ marginLeft: "10px" }}
-            >
+            <Button component={Link} to={{ pathname: "/auth/", state: "login" }} variant="contained" color="primary">
+              Sign In
+            </Button>
+            <Button component={Link} to={{ pathname: "/auth/", state: "register" }} style={{ marginLeft: "10px" }}>
               Register
             </Button>
           </div>
