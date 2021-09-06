@@ -1,0 +1,45 @@
+
+
+################################################################################################
+POST http://localhost:5000/user/signup HTTP/1.1
+content-type: application/json
+
+{
+    "firstName" : "Kalle",
+   "lastName" : "Anka",
+    "email": "kalle@anka.se",
+    "password" : "hej123"
+}
+
+################################################################
+POST http://localhost:5000/user/signin HTTP/1.1
+content-type: application/json
+
+{   
+    "username": "kalle@anka.se",
+    "password" : "hej123"
+}
+
+
+################################################################
+
+GET http://localhost:5000/user/signout HTTP/1.1
+
+################################################################
+
+GET http://localhost:5000/user/authenticated HTTP/1.1
+
+################################################################
+POST http://localhost:5000/posts/ HTTP/1.1
+content-type: application/json
+
+{
+    "title" : "Test",
+    "message": "Test Test Test",
+    "name" : "Test",
+    "tags": ["Test, Test2, Test3"],
+    "starring" : "Test",
+    "time" : "Test",
+    "genre": "Test",
+    "director" : "Test"
+}
