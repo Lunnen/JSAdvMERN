@@ -11,7 +11,7 @@ export default makeStyles({
     border: "solid",
   },
   fullHeightCard: {
-    height: "100%",
+    height: "50%",
   },
   card: {
     display: "flex",
@@ -45,7 +45,7 @@ export default makeStyles({
     margin: "20px",
   },
   title: {
-    padding: "0 16px",
+    padding: "0 10px",
   },
   cardActions: {
     padding: "0 16px 8px 16px",
@@ -55,17 +55,18 @@ export default makeStyles({
   modalCardWrapper: {
     position: "absolute",
     zIndex: "1",
-    left: "5%",
-    right: "5%",
-    top: "20%",
-    bottom: "5%",
+    left: "20%",
+    right: "20%",
+    top: "10%",
+    bottom: "10%",
     margin: "auto",
-    width: "50%",
+    maxWidth: "50%",
+    maxHeight:"70%",
     cursor: "pointer",
     overflow: "auto",
     backgroundColor: "rgba(207, 207, 207, 0.9)",
-    borderRadius: "0.5rem",
-    border: "10px solid rgba(255, 232, 31)",
+    borderRadius: "15px",
+    border: "4px solid black",
   },
   close: {
     color: "darkred",
@@ -74,10 +75,10 @@ export default makeStyles({
     fontWeight: "bold",
 
     "&:hover": {
-      color: "black",
+      color: "red",
       textDecoration: "none",
       cursor: "pointer",
-      color: "red",
+      
     },
     "&:focus": {
       color: "black",
@@ -85,4 +86,13 @@ export default makeStyles({
       cursor: "pointer",
     },
   },
+  overlay3: {
+    width: "100vw",
+    height: "100vh",
+    top: "0",
+    left: "0",
+    right: "0",
+    bottom: "0",
+    position: "fixed",
+    background: "rgba(49,49,49,0.8)"},
 });

@@ -3,14 +3,12 @@ import { useDispatch } from "react-redux";
 import { Avatar, Button, Paper, Grid, Typography, Container } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-
-import Icon from "./icon";
 import { signin, signup } from "../../actions/auth";
 import { AUTH } from "../../constants/actionTypes";
 import useStyles from "./styles";
 import Input from "./Input";
 
-const initialState = { firstName: "", lastName: "", email: "", password: "", confirmPassword: "" };
+const initialState = { firstName: "", lastName: "", username: "", password: "", confirmPassword: "" };
 
 const SignUp = (props) => {
   const [form, setForm] = useState(initialState);
@@ -39,9 +37,9 @@ const SignUp = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isSignup) {
-      dispatch(signup(form, history));
+      dispatch(signup(form, history)); //here
     } else {
-      dispatch(signin(form, history));
+      dispatch(signin(form, history)); //here
     }
   };
 
@@ -64,7 +62,7 @@ const SignUp = (props) => {
                 <Input name="lastName" label="Last Name" handleChange={handleChange} half />
               </>
             )}
-            <Input name="email" label="Email Address" handleChange={handleChange} type="email" />
+            <Input name="username" label="Email Address" handleChange={handleChange} type="email" />
             <Input name="password" label="Password" handleChange={handleChange} type={showPassword ? "text" : "password"} handleShowPassword={handleShowPassword} />
             {isSignup && <Input name="confirmPassword" label="Repeat Password" handleChange={handleChange} type="password" />}
           </Grid>

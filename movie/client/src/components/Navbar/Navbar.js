@@ -6,9 +6,8 @@ import decode from "jwt-decode";
 import MovieCoolector from "../../images/MovieCoolector.png";
 import * as actionType from "../../constants/actionTypes";
 import useStyles from "./styles";
-
-const Navbar = () => {
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
+const Navbar = (myFunction) => {
+  const [user, setUser, post , setPost] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const location = useLocation();
   const history = useHistory();
@@ -21,6 +20,11 @@ const Navbar = () => {
 
     setUser(null);
   };
+  
+  const addMovie = () => {
+    //Move to /form here
+    myFunction();
+  }
 
   useEffect(() => {
     const token = user?.token;
@@ -38,14 +42,13 @@ const Navbar = () => {
     <AppBar className={classes.appBar} position="static" color="inherit">
       <div className={classes.brandContainer}>
         <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">
-          {" "}
           <img className={classes.image} src={MovieCoolector} alt="movie" height="80" />
         </Typography>
       </div>
       <Toolbar className={classes.toolbar}>
         {user?.result ? (
           <div className={classes.profile}>
-            <Button component={Link} to="/" style={{ marginLeft: "10px" }}>
+            <Button component={Link} to="/"  style={{ marginLeft: "10px" }} onClick={addMovie}>
               Add Movie
             </Button>
             <Button component={Link} to="/" style={{ marginLeft: "10px" }}>

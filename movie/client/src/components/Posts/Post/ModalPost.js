@@ -1,13 +1,13 @@
 import React from "react";
 import { Card, CardActions, CardContent, CardMedia, Button, Typography } from "@material-ui/core/";
-import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
+
 import DeleteSweepIcon from "@material-ui/icons/DeleteSweep";
 import EditIcon from "@material-ui/icons/Edit";
-import ThumbUpAltOutlined from "@material-ui/icons/ThumbUpAltOutlined";
+
 import { useDispatch } from "react-redux";
 import moment from "moment";
 
-import { likePost, deletePost } from "../../../actions/posts";
+import {deletePost } from "../../../actions/posts";
 import useStyles from "./styles";
 
 const ModalPost = ({ post, setCurrentId, updateModalCard }) => {
@@ -16,31 +16,10 @@ const ModalPost = ({ post, setCurrentId, updateModalCard }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const defaultMovieImg = "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png";
 
-  const Likes = () => {
-    if (post.likes.length > 0) {
-      return post.likes.find((like) => like === (user?.result?.googleId || user?.result?._id)) ? (
-        <>
-          <ThumbUpAltIcon fontSize="small" />
-          &nbsp;{post.likes.length > 2 ? `You and ${post.likes.length - 1} others` : `${post.likes.length} like${post.likes.length > 1 ? "s" : ""}`}
-        </>
-      ) : (
-        <>
-          <ThumbUpAltOutlined fontSize="small" />
-          &nbsp;{post.likes.length} {post.likes.length === 1 ? "Like" : "Likes"}
-        </>
-      );
-    }
-
-    return (
-      <>
-        <ThumbUpAltOutlined fontSize="small" />
-        &nbsp;Like
-      </>
-    );
-  };
-
+ 
   return (
     <div className={classes.modalCardWrapper}>
+      <div className={classes.overlay3}></div>
       <Card className={classes.modalCard}>
         <CardMedia className={classes.media} image={post.selectedFile || defaultMovieImg} title={post.title} />
         <div className={classes.overlay}>
@@ -63,13 +42,19 @@ const ModalPost = ({ post, setCurrentId, updateModalCard }) => {
           {post.title}
         </Typography>
         <CardContent>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography color="textSecondary">
             {post.message}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="textSecondary">
+            Directors:{post.director}
+          </Typography>
+         <Typography variant="body2" color="textSecondary">
             Starring:{post.starring}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="textSecondary">
+            Genre:{post.genre}
+          </Typography>
+          <Typography variant="body2" color="textSecondary">
             Time: {post.time}
           </Typography>
           <Typography variant="body2" color="textSecondary">
@@ -78,9 +63,7 @@ const ModalPost = ({ post, setCurrentId, updateModalCard }) => {
         </CardContent>
 
         <CardActions className={classes.cardActions}>
-          <Button size="small" color="primary" disabled={!user?.result} onClick={() => dispatch(likePost(post._id))}>
-            <Likes />
-          </Button>
+          
           <Button className={classes.close} onClick={() => updateModalCard(false)}>
             X
           </Button>
@@ -92,7 +75,9 @@ const ModalPost = ({ post, setCurrentId, updateModalCard }) => {
           )}
         </CardActions>
       </Card>
+
     </div>
+    
   );
 };
 
