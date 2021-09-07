@@ -61,7 +61,7 @@ export default makeStyles({
     bottom: "10%",
     margin: "auto",
     maxWidth: "50%",
-    maxHeight:"70%",
+    maxHeight: "70%",
     cursor: "pointer",
     overflow: "auto",
     backgroundColor: "rgba(207, 207, 207, 0.9)",
@@ -78,7 +78,6 @@ export default makeStyles({
       color: "red",
       textDecoration: "none",
       cursor: "pointer",
-      
     },
     "&:focus": {
       color: "black",
@@ -86,13 +85,4 @@ export default makeStyles({
       cursor: "pointer",
     },
   },
-  overlay3: {
-    width: "100vw",
-    height: "100vh",
-    top: "0",
-    left: "0",
-    right: "0",
-    bottom: "0",
-    position: "fixed",
-    background: "rgba(49,49,49,0.8)"},
 });

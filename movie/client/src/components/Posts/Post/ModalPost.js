@@ -7,7 +7,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import { useDispatch } from "react-redux";
 import moment from "moment";
 
-import {deletePost } from "../../../actions/posts";
+import { deletePost } from "../../../actions/posts";
 import useStyles from "./styles";
 
 const ModalPost = ({ post, setCurrentId, updateModalCard }) => {
@@ -16,10 +16,8 @@ const ModalPost = ({ post, setCurrentId, updateModalCard }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
   const defaultMovieImg = "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png";
 
- 
   return (
     <div className={classes.modalCardWrapper}>
-      <div className={classes.overlay3}></div>
       <Card className={classes.modalCard}>
         <CardMedia className={classes.media} image={post.selectedFile || defaultMovieImg} title={post.title} />
         <div className={classes.overlay}>
@@ -42,13 +40,11 @@ const ModalPost = ({ post, setCurrentId, updateModalCard }) => {
           {post.title}
         </Typography>
         <CardContent>
-          <Typography color="textSecondary">
-            {post.message}
-          </Typography>
+          <Typography color="textSecondary">{post.message}</Typography>
           <Typography variant="body2" color="textSecondary">
             Directors:{post.director}
           </Typography>
-         <Typography variant="body2" color="textSecondary">
+          <Typography variant="body2" color="textSecondary">
             Starring:{post.starring}
           </Typography>
           <Typography variant="body2" color="textSecondary">
@@ -63,7 +59,6 @@ const ModalPost = ({ post, setCurrentId, updateModalCard }) => {
         </CardContent>
 
         <CardActions className={classes.cardActions}>
-          
           <Button className={classes.close} onClick={() => updateModalCard(false)}>
             X
           </Button>
@@ -75,9 +70,7 @@ const ModalPost = ({ post, setCurrentId, updateModalCard }) => {
           )}
         </CardActions>
       </Card>
-
     </div>
-    
   );
 };
 
