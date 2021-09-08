@@ -6,71 +6,110 @@ import decode from "jwt-decode";
 import MovieCoolector from "../../images/MovieCoolector.png";
 import * as actionType from "../../constants/actionTypes";
 import useStyles from "./styles";
+import { signout } from "../../actions/auth";
+
 const Navbar = () => {
-  const [user, setUser, post, setPost] = useState(JSON.parse(localStorage.getItem("profile")));
-  const dispatch = useDispatch();
-  const location = useLocation();
-  const history = useHistory();
-  const classes = useStyles();
+    const [user, setUser, post, setPost] = useState(
+        JSON.parse(localStorage.getItem("profile"))
+    );
+    const dispatch = useDispatch();
+    const location = useLocation();
+    const history = useHistory();
+    const classes = useStyles();
 
-  const logout = () => {
-    dispatch({ type: actionType.LOGOUT });
+    const logout = () => {
+        //dispatch({ type: actionType.LOGOUT });
+        dispatch(signout());
+        setUser(null);
+    };
 
-    history.push("/auth");
+    useEffect(() => {
+        const token = user?.token;
 
-    setUser(null);
-  };
+        if (token) {
+            const decodedToken = decode(token);
 
-  useEffect(() => {
-    const token = user?.token;
+            if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+        }
 
-    if (token) {
-      const decodedToken = decode(token);
+        setUser(JSON.parse(localStorage.getItem("profile")));
+    }, [location]);
 
-      if (decodedToken.exp * 1000 < new Date().getTime()) logout();
-    }
+    return (
+        <AppBar className={classes.appBar} position="static" color="inherit">
+            <div className={classes.brandContainer}>
+                <Typography
+                    component={Link}
+                    to="/"
+                    className={classes.heading}
+                    variant="h2"
+                    align="center"
+                >
+                    <img
+                        className={classes.image}
+                        src={MovieCoolector}
+                        alt="movie"
+                        height="80"
+                    />
+                </Typography>
+            </div>
+            <Toolbar className={classes.toolbar}>
+                {user?.result ? (
+                    <div className={classes.profile}>
+                        <Button
+                            component={Link}
+                            to={{ pathname: "/", state: "Home" }}
+                            style={{ marginLeft: "10px" }}
+                        >
+                            All Movie
+                        </Button>
+                        <Button
+                            component={Link}
+                            to={{ pathname: "/addmovie", state: "HomeUser" }}
+                            style={{ marginLeft: "10px" }}
+                        >
+                            Add Movie
+                        </Button>
 
-    setUser(JSON.parse(localStorage.getItem("profile")));
-  }, [location]);
+                        <Avatar
+                            className={classes.avatar}
+                            alt={user?.result.name}
+                            src={user?.result.imageUrl}
+                        >
+                            {user?.result.name.charAt(0)}
+                        </Avatar>
 
-  return (
-    <AppBar className={classes.appBar} position="static" color="inherit">
-      <div className={classes.brandContainer}>
-        <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">
-          <img className={classes.image} src={MovieCoolector} alt="movie" height="80" />
-        </Typography>
-      </div>
-      <Toolbar className={classes.toolbar}>
-        {user?.result ? (
-          <div className={classes.profile}>
-            <Button component={Link} to={{ pathname: "/", state: "Home" }} style={{ marginLeft: "10px" }}>
-              All Movie
-            </Button>
-            <Button component={Link} to={{ pathname: "/addmovie", state: "HomeUser" }} style={{ marginLeft: "10px" }}>
-              Add Movie
-            </Button>
-
-            <Avatar className={classes.avatar} alt={user?.result.name} src={user?.result.imageUrl}>
-              {user?.result.name.charAt(0)}
-            </Avatar>
-
-            <Button variant="contained" color="secondary" onClick={logout} className={classes.logout}>
-              Logout
-            </Button>
-          </div>
-        ) : (
-          <div className={classes.profile}>
-            <Button component={Link} to={{ pathname: "/auth/", state: "login" }} variant="contained" color="primary">
-              Sign In
-            </Button>
-            <Button component={Link} to={{ pathname: "/auth/", state: "register" }} style={{ marginLeft: "10px" }}>
-              Register
-            </Button>
-          </div>
-        )}
-      </Toolbar>
-    </AppBar>
-  );
+                        <Button
+                            variant="contained"
+                            color="secondary"
+                            onClick={logout}
+                            className={classes.logout}
+                        >
+                            Logout
+                        </Button>
+                    </div>
+                ) : (
+                    <div className={classes.profile}>
+                        <Button
+                            component={Link}
+                            to={{ pathname: "/auth/", state: "login" }}
+                            variant="contained"
+                            color="primary"
+                        >
+                            Sign In
+                        </Button>
+                        <Button
+                            component={Link}
+                            to={{ pathname: "/auth/", state: "register" }}
+                            style={{ marginLeft: "10px" }}
+                        >
+                            Register
+                        </Button>
+                    </div>
+                )}
+            </Toolbar>
+        </AppBar>
+    );
 };
 
 export default Navbar;

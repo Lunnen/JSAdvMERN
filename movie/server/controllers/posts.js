@@ -32,7 +32,6 @@ module.exports.createPost = async (req, res) => {
 
     const newPostMessage = new PostMessage({
         ...post,
-        creator: req.userId,
         createdAt: new Date().toISOString(),
     });
 
