@@ -60,7 +60,7 @@ export default makeStyles({
         top: "10%",
         bottom: "10%",
         margin: "auto",
-        maxWidth: "30%",
+        maxWidth: "50%",
         maxHeight: "70%",
         cursor: "pointer",
         overflow: "auto",

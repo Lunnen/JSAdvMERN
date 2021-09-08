@@ -1,7 +1,7 @@
 import * as actionType from "../constants/actionTypes";
 import { isAuthenticated } from "../actions/auth";
 
-var result = null;
+var BEprofile = null;
 
 const authReducer = (state = { authData: null }, action) => {
     switch (action.type) {
@@ -24,18 +24,18 @@ const authReducer = (state = { authData: null }, action) => {
 
             return { ...state, authData: null, loading: false, errors: null };
         default:
-            const user = JSON.parse(localStorage.getItem("profile"));
+            const LSprofile = JSON.parse(localStorage.getItem("profile"));
 
             // Get authentication from Backend
             async function run() {
-                result = await isAuthenticated();
+                BEprofile = await isAuthenticated();
             }
             run();
 
-            if (user?.isAuthenticated || result?.isAuthenticated) {
+            if (LSprofile?.isAuthenticated && BEprofile?.isAuthenticated) {
                 return {
                     ...state,
-                    authData: result === null ? user : result, //if no answer from BE, use LS response
+                    authData: LSprofile,
                     loading: false,
                     errors: null,
                 };

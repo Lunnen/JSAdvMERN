@@ -49,7 +49,6 @@ const Navbar = () => {
                         className={classes.image}
                         src={MovieCoolector}
                         alt="movie"
-                        height="80"
                     />
                 </Typography>
             </div>
@@ -58,15 +57,15 @@ const Navbar = () => {
                     <div className={classes.profile}>
                         <Button
                             component={Link}
+                            className={(classes.rightSide, classes.textBox)}
                             to={{ pathname: "/", state: "Home" }}
-                            style={{ marginLeft: "10px" }}
                         >
                             All Movie
                         </Button>
                         <Button
                             component={Link}
+                            className={(classes.rightSide, classes.textBox)}
                             to={{ pathname: "/addmovie", state: "HomeUser" }}
-                            style={{ marginLeft: "10px" }}
                         >
                             Add Movie
                         </Button>
@@ -91,6 +90,7 @@ const Navbar = () => {
                 ) : (
                     <div className={classes.profile}>
                         <Button
+                            className={(classes.rightSide, classes.signInOut)}
                             component={Link}
                             to={{ pathname: "/auth/", state: "login" }}
                             variant="contained"
@@ -100,8 +100,8 @@ const Navbar = () => {
                         </Button>
                         <Button
                             component={Link}
+                            className={(classes.rightSide, classes.signInOut)}
                             to={{ pathname: "/auth/", state: "register" }}
-                            style={{ marginLeft: "10px" }}
                         >
                             Register
                         </Button>

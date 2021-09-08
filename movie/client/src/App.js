@@ -11,7 +11,7 @@ import { PublicRoute } from "./routecontrol/PublicRoute";
 
 const App = () => (
     <BrowserRouter>
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" disableGutters={true}>
             <Navbar />
             <Switch>
                 <Route path="/" exact component={Home} />
