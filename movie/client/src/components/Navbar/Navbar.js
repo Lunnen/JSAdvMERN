@@ -88,7 +88,7 @@ const Navbar = () => {
                 ) : (
                     <div className={classes.profile}>
                         <Button
-                            className={[classes.rightSide, classes.signInOut]}
+                            className={classes.signInOut}
                             component={Link}
                             to={{ pathname: "/auth/", state: "login" }}
                             variant="contained"
@@ -98,7 +98,7 @@ const Navbar = () => {
                         </Button>
                         <Button
                             component={Link}
-                            className={[classes.rightSide, classes.signInOut]}
+                            className={classes.signInOut}
                             to={{ pathname: "/auth/", state: "register" }}
                         >
                             Register
