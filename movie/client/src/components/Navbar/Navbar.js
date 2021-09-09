@@ -65,7 +65,7 @@ const Navbar = () => {
                             className={classes.textBox}
                             to={{ pathname: "/addmovie" }}
                         >
-                            Handle Movie
+                            Manage
                         </Button>
 
                         <Avatar
