@@ -9,8 +9,6 @@ import Manage from "./components/Manage";
 import { PrivateRoute } from "./routecontrol/PrivateRoute";
 import { PublicRoute } from "./routecontrol/PublicRoute";
 
-document.body.style.backgroundColor = "cornflowerblue";
-
 const App = () => (
     <BrowserRouter>
         <Container maxWidth="lg" disableGutters={true}>
