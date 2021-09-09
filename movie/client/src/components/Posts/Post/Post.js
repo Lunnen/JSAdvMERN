@@ -1,28 +1,23 @@
 import React, { useState } from "react";
 import { Card, CardContent, CardMedia, Typography } from "@material-ui/core/";
 
-import { useDispatch } from "react-redux";
 import moment from "moment";
 
-import ModalPost from "./ModalPost";
+import PopupPost from "./PopupPost";
 import useStyles from "./styles";
 
 const Post = ({ post, setCurrentId }) => {
   const [viewCard, setViewCard] = useState(false);
-  const dispatch = useDispatch();
   const classes = useStyles();
-  const user = JSON.parse(localStorage.getItem("profile"));
   const defaultMovieImg = "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png";
 
   const updateModalCard = () => {
     setViewCard((prev) => !prev);
   };
 
- 
-
   return (
     <>
-      {viewCard && <ModalPost post={post} setCurrentId={setCurrentId} updateModalCard={updateModalCard} />}
+      {viewCard && <PopupPost post={post} setCurrentId={setCurrentId} updateModalCard={updateModalCard} />}
 
       <Card className={classes.card} onClick={updateModalCard}>
         <CardMedia className={classes.media} image={post.selectedFile || defaultMovieImg} title={post.title} />
@@ -46,8 +41,6 @@ const Post = ({ post, setCurrentId }) => {
             <b>Post by:</b> {post.name}
           </Typography>
         </CardContent>
-
-      
       </Card>
     </>
   );

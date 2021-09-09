@@ -10,13 +10,9 @@ import "./index.css";
 
 const store = createStore(reducers, {}, compose(applyMiddleware(thunk)));
 
-store.subscribe(() => {
-    console.log("Store changed! ", store.getState());
-});
-
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById("root")
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
 );
