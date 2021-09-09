@@ -92,7 +92,6 @@ router.get(
     "/signout",
     passport.authenticate("jwt", { session: false }),
     (req, res) => {
-        console.log("signOUT");
         res.clearCookie("access-token");
         res.status(200).json({ message: "User has been logged out" });
     }

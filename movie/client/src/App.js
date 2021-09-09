@@ -2,10 +2,10 @@ import React from "react";
 import { Container } from "@material-ui/core";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import Home from "./components/Home/Home";
+import Home from "./components/Movielist";
 import Navbar from "./components/Navbar/Navbar";
 import Auth from "./components/Auth/Auth";
-import HomeUser from "./components/HomeUser/Home";
+import HomeUser from "./components/Manage";
 import { PrivateRoute } from "./routecontrol/PrivateRoute";
 import { PublicRoute } from "./routecontrol/PublicRoute";
 

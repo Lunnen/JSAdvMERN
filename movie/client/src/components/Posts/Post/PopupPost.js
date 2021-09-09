@@ -8,6 +8,8 @@ import {
     Typography,
 } from "@material-ui/core/";
 
+import { Link } from "react-router-dom";
+
 import DeleteSweepIcon from "@material-ui/icons/DeleteSweep";
 import EditIcon from "@material-ui/icons/Edit";
 
@@ -44,6 +46,8 @@ const ModalPost = ({ post, setCurrentId, updateModalCard }) => {
                                 setCurrentId(post._id);
                                 updateModalCard();
                             }}
+                            component={Link}
+                            to={{ pathname: "/addmovie" }}
                             style={{ color: "black" }}
                             size="small"
                         >

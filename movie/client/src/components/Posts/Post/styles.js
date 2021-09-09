@@ -54,7 +54,7 @@ export default makeStyles({
     },
     modalCardWrapper: {
         position: "absolute",
-        zIndex: "1",
+        zIndex: "100",
         left: "20%",
         right: "20%",
         top: "10%",
