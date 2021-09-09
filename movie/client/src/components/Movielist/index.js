@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Container } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 
-import { getPosts } from "../../actions/posts";
+import { getPosts } from "../../redux/actions/posts";
 import Posts from "../Posts/Posts";
 const Movielist = () => {
     const [currentId, setCurrentId] = useState(0);

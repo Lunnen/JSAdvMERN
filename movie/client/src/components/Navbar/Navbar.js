@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import decode from "jwt-decode";
 import MovieCoolector from "../../images/MovieCoolector.png";
 import useStyles from "./styles";
-import { signout } from "../../actions/auth";
+import { signout } from "../../redux/actions/auth";
 
 const Navbar = () => {
     const [user, setUser] = useState(

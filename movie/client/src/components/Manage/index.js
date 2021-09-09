@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Container, Grid, Grow } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 
-import Form from "../Movieform";
-import { getPosts } from "../../actions/posts";
+import Movieform from "../Movieform";
+import { getPosts } from "../../redux/actions/posts";
 import Posts from "../Posts/Posts";
 const Manage = () => {
     const [currentId, setCurrentId] = useState(0);
@@ -26,7 +26,7 @@ const Manage = () => {
                         <Posts setCurrentId={setCurrentId} />
                     </Grid>
                     <Grid item xs={12} sm={4}>
-                        <Form
+                        <Movieform
                             currentId={currentId}
                             setCurrentId={setCurrentId}
                         />

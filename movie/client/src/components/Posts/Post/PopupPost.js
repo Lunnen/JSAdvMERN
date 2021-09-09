@@ -16,7 +16,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import { useDispatch } from "react-redux";
 import moment from "moment";
 
-import { deletePost } from "../../../actions/posts";
+import { deletePost } from "../../../redux/actions/posts";
 import useStyles from "./styles";
 
 const ModalPost = ({ post, setCurrentId, updateModalCard }) => {
