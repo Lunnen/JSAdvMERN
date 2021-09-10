@@ -13,8 +13,8 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(cors({ origin: true, credentials: true }));
 
-//const CONNECTION_URL = process.env.MONGODB_URI || "mongodb+srv://mernAdmin:MPOviCI36n8zFn2p@mern.vxw30.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const CONNECTION_URL = process.env.MONGODB_URI || "mongodb://localhost:27017/fantastic-four-db";
+const CONNECTION_URL = process.env.MONGODB_URI || "mongodb+srv://mernAdmin:MPOviCI36n8zFn2p@mern.vxw30.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+//const CONNECTION_URL = process.env.MONGODB_URI || "mongodb://localhost:27017/fantastic-four-db";
 
 const PORT = process.env.PORT || 5000;
 
